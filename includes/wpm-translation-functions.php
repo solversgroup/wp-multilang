@@ -379,9 +379,10 @@ function wpm_translate_post( $post, $lang = '' ) {
  */
 function wpm_translate_term( $term, $taxonomy, $lang = '' ) {
 
-	if ( null === wpm_get_taxonomy_config( $taxonomy ) ) {
-		return $term;
-	}
+	// TODO: разобраться почему тут это условие
+	// if ( null === wpm_get_taxonomy_config( $taxonomy ) ) {
+	// 	return $term;
+	// }
 
 	if ( is_object( $term ) ) {
 		return wpm_translate_object( $term, $lang );
