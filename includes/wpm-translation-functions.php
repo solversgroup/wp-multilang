@@ -58,10 +58,15 @@ function wpm_translate_url( $url, $language = '' ) {
 	$default_language    = wpm_get_default_language();
 	$default_lang_prefix = get_option( 'wpm_use_prefix', 'no' ) === 'yes' ? $default_language : '';
 
-	if ( $language === $default_language ) {
-		$new_uri = '/' . $default_lang_prefix . $default_uri;
+	if ( get_option( 'wpm_use_domains', 'no' ) === 'no' ) {
+		if ( $language === $default_language ) {
+			$new_uri = '/' . $default_lang_prefix . $default_uri;
+		} else {
+			$new_uri = '/' . $language . $default_uri;
+		}
 	} else {
-		$new_uri = '/' . $language . $default_uri;
+		$new_uri = $options[$language]['domain'] . $default_uri;
+		$host = '';
 	}
 
 	$new_uri = preg_replace( '/(\/+)/', '/', $new_uri );
