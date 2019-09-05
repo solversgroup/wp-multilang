@@ -90,6 +90,14 @@ class WPM_Settings_General extends WPM_Settings_Page {
 				'type'    => 'checkbox',
 			),
 
+			array(
+				'title'   => __( 'Use in theme', 'wp-multilang' ),
+				'desc'    => __( 'Use as theme dependency.', 'wp-multilang' ),
+				'id'      => 'wpm_use_in_theme',
+				'default' => 'no',
+				'type'    => 'checkbox',
+			),
+
 			array( 'type' => 'sectionend', 'id' => 'general_options' ),
 
 		) );
