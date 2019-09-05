@@ -31,6 +31,7 @@ class WPM_WooCommerce {
 		add_filter( 'woocommerce_coupon_get_description', 'wpm_translate_string' );
 		add_filter( 'woocommerce_shortcode_products_query', array( $this, 'remove_filter' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_js_frontend' ) );
+		add_filter( 'woocommerce_breadcrumb_defaults', array( $this, 'breadcrumbs_defaults_home_page_on_front' ), 10, 1 );
 		add_filter( 'woocommerce_cart_shipping_method_full_label', 'wpm_translate_string' );
 		add_filter( 'woocommerce_shipping_instance_form_fields_flat_rate', 'wpm_translate_value' );
 		add_filter( 'woocommerce_shipping_instance_form_fields_free_shipping', 'wpm_translate_value' );
@@ -77,6 +78,26 @@ class WPM_WooCommerce {
 				});
 			");
 		}
+	}
+
+	/**
+	 * Translate woocommerce breadcrumbs defaults for home link title
+	 * if set page_on_front option in Reading
+	 *
+	 * @param array $defaults
+	 *
+	 * @return array
+	 */
+	public function breadcrumbs_defaults_home_page_on_front( $defaults ) {
+		$show_on_front = get_option( 'show_on_front' );
+		$page_on_front = get_option( 'page_on_front' );
+
+		if ( $show_on_front === 'page' && $page_on_front != '0' ) {
+			$home_title = get_the_title( (int) $page_on_front );
+			$defaults['home'] = $home_title;
+		}
+
+		return $defaults;
 	}
 
 	/**
