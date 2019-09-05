@@ -502,11 +502,13 @@ class WPM_Setup {
 			return $value;
 		}
 
-		$user_language    = wpm_get_user_language();
-		$default_language = wpm_get_default_language();
+		if ( get_option( 'wpm_use_domains', 'no' ) === 'no' ) {
+			$user_language = wpm_get_user_language();
+			$default_language = wpm_get_default_language();
 
-		if ( ( ( $user_language !== $default_language ) || ( self::get_option( 'use_prefix', 'no' ) === 'yes' ) ) && get_option( 'permalink_structure' ) ) {
-			$value .= '/' . $user_language;
+			if ((($user_language !== $default_language) || (self::get_option('use_prefix', 'no') === 'yes')) && get_option('permalink_structure')) {
+				$value .= '/' . $user_language;
+			}
 		}
 
 		return $value;
