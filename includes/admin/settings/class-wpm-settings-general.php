@@ -98,6 +98,14 @@ class WPM_Settings_General extends WPM_Settings_Page {
 				'type'    => 'checkbox',
 			),
 
+			array(
+				'title'   => __( 'Use domains', 'wp-multilang' ),
+				'desc'    => __( 'Use domains instead prefix.', 'wp-multilang' ),
+				'id'      => 'wpm_use_domains',
+				'default' => 'no',
+				'type'    => 'checkbox',
+			),
+
 			array( 'type' => 'sectionend', 'id' => 'general_options' ),
 
 		) );

@@ -116,6 +116,7 @@ class WPM_Settings_Languages extends WPM_Settings_Page {
 				$languages[ $code ] = array(
 					'enable'      => $item['enable'] ? 1 : 0,
 					'locale'      => $item['locale'],
+					'domain'      => $item['domain'],
 					'name'        => $item['name'],
 					'translation' => $item['translation'] ?: 'en_US',
 					'date'        => $item['date'],

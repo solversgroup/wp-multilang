@@ -66,6 +66,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 									</td>
 								</tr>
 								<tr>
+									<td class="row-title"><?php esc_attr_e( 'Domain', 'wp-multilang' ); ?></td>
+									<td>
+										<input type="text" name="wpm_languages[<?php echo esc_attr( $i ); ?>][domain]" value="<?php esc_attr_e( $language['domain'] ); ?>" title="<?php esc_attr_e( 'Domain', 'wp-multilang' ); ?>" placeholder="<?php esc_attr_e( 'Domain', 'wp-multilang' ); ?>">
+										<p><i><?php esc_attr_e( 'If use domains enabled in General Settings', 'wp-multilang' ); ?></i></p>
+									</td>
+								</tr>
+								<tr>
 									<td class="row-title"><?php esc_attr_e( 'Translation', 'wp-multilang' ); ?></td>
 									<td>
 										<?php
@@ -154,6 +161,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<td class="row-title"><?php esc_attr_e( 'Locale *', 'wp-multilang' ); ?></td>
 							<td>
 								<input type="text" name="wpm_languages[{{ data.count }}][locale]" value="" title="<?php esc_attr_e( 'Locale *', 'wp-multilang' ); ?>" placeholder="<?php esc_attr_e( 'Locale *', 'wp-multilang' ); ?>" required>
+							</td>
+						</tr>
+						<tr>
+							<td class="row-title"><?php esc_attr_e( 'Domain', 'wp-multilang' ); ?></td>
+							<td>
+								<input type="text" name="wpm_languages[{{ data.count }}][domain]" value="" title="<?php esc_attr_e( 'Domain', 'wp-multilang' ); ?>" placeholder="<?php esc_attr_e( 'Domain', 'wp-multilang' ); ?>">
+								<p><i><?php esc_attr_e( 'If use domains enabled in General Settings', 'wp-multilang' ); ?></i></p>
 							</td>
 						</tr>
 						<tr>
