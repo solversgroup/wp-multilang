@@ -25,7 +25,7 @@ function wpm_translate_url( $url, $language = '' ) {
 
 	$host = wpm_get_orig_home_url();
 
-	if ( strpos( $url, $host ) === false ) {
+	if ( strpos( $url, $host ) === false && get_option( 'wpm_use_domains', 'no' ) === 'no' ) {
 		return $url;
 	}
 
