@@ -69,12 +69,18 @@ function wpm_translate_url( $url, $language = '' ) {
 		$host = '';
 	}
 
-	$new_uri = preg_replace( '/(\/+)/', '/', $new_uri );
+	if ( get_option( 'wpm_use_domains', 'no' ) === 'no' ) {
+		$new_uri = preg_replace( '/(\/+)/', '/', $new_uri );
+	}
 
 	if ( '/' !== $new_uri ) {
 		$new_url = $host . $new_uri;
 	} else {
 		$new_url = $host;
+	}
+
+	if ( ( get_option( 'wpm_use_domains', 'no' ) === 'yes' ) && $options[$language]['domain'] === get_bloginfo( 'url' ) ) {
+		$new_url = get_bloginfo( 'url' );
 	}
 
 	return apply_filters( 'wpm_translate_url', $new_url, $language, $url );
