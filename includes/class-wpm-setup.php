@@ -309,6 +309,11 @@ class WPM_Setup {
 	 * @return string
 	 */
 	public function get_user_language() {
+
+		if ( ! $this->user_language && self::get_option( 'use_domains', 'no' ) === 'no' ) {
+			$this->user_language = $this->set_user_language();
+		}
+
 		if ( defined( 'WPM_LANG' ) && WPM_LANG && self::get_option( 'use_domains', 'no' ) === 'yes' ) {
 			$this->user_language = WPM_LANG;
 			return $this->user_language;
