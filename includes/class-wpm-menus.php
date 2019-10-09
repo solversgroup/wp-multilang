@@ -165,9 +165,8 @@ class WPM_Menus {
 	 * @return mixed
 	 */
 	public function translate_menu_url( $menu_item ) {
-
 		if ( 'custom' === $menu_item->object && ! is_admin() ) {
-			$menu_item->url = wpm_translate_url( $menu_item->url );
+			$menu_item->url = wpm_translate_string( $menu_item->url );
 		}
 
 		return $menu_item;
