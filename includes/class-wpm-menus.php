@@ -166,7 +166,12 @@ class WPM_Menus {
 	 */
 	public function translate_menu_url( $menu_item ) {
 		if ( 'custom' === $menu_item->object && ! is_admin() ) {
-			$menu_item->url = wpm_translate_string( $menu_item->url );
+
+			if ( get_option( 'wpm_use_domains', 'no' ) === 'yes' ) ) {
+				$menu_item->url = wpm_translate_string( $menu_item->url );
+			} else {
+				$menu_item->url = wpm_translate_url( $menu_item->url );
+			}
 		}
 
 		return $menu_item;
