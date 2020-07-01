@@ -202,7 +202,12 @@ final class WP_Multilang {
 	 * @return string
 	 */
 	public function plugin_url() {
-		return untrailingslashit( plugins_url( '/', WPM_PLUGIN_FILE ) );
+		$wpm_use_in_theme = get_option( 'wpm_use_in_theme' );
+
+		$theme_path  = untrailingslashit( get_theme_file_uri( '/wp-multilang' ) );
+		$plugin_path = untrailingslashit( plugins_url( '/', WPM_PLUGIN_FILE ) );
+
+		return 'yes' === $wpm_use_in_theme ? $theme_path : $plugin_path;
 	}
 
 	/**
